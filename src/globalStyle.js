@@ -15,6 +15,7 @@ const GlobalStyled = createGlobalStyle`
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background-color: black;
    }
 `
 export default GlobalStyled
