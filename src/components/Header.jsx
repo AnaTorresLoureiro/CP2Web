@@ -6,9 +6,10 @@ export default function Header(){
     return(
         <>
             <HeaderNav>
-                <Link to='/'>HOME</Link>
-                <Link to='/produto'>PRODUTOS</Link>
-                <Link to='/login'>LOGIN</Link>
+                <div className="links">
+                    <Link to='/'>HOME</Link>
+                    <Link to='/login'>LOGIN</Link>
+                </div>
             </HeaderNav>
         </>
     )
