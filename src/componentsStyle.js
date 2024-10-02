@@ -1,53 +1,89 @@
 import styled from "styled-components";
 
 export const HeaderNav = styled.header`
-    width: 100%;
-    min-height: 5vh;
+    background-color: #8a0015;
+    color: #fff;
     display: flex;
     position: absolute;
-    z-index: 5;
-    justify-content: center;
+    max-width: 900px;
+    margin-left: 43%;
+    border-radius: 0 0 60px 60px; /* Bordas arredondadas */
+    clip-path: polygon(0 0, 100% 0, 89% 90%, 11% 90%); /* Faz as bordas serem triangulares */
 
-    a{
-        justify-self: center;
-        text-decoration: none;
-        padding: 5px;
-        margin-left: 30px;
-        color: white;
-        font-size: 22px;
-        font-weight: bold;
-        border-radius: 10px;
-        transition: background-color 0.5s ease;
-    }
 
-    a:hover{
-        background-color: #8b0000;
-        color: #ff9489;
-    }
+        .links {
+            display: flex;
+            gap: 20px;
+        }
 
-    img{
-        width: 100px;
-    }
+        .links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: transparent;
+            transition: color 0.3s;
+        }
 
-`
+        .links a:hover {
+            color: black; 
+        }
+`;
 
 export const SecFooter = styled.footer`
-    min-height: 15vh;
-    background-color: #8a0015;
-    border-radius: 25px 25px 0px 0px;
-    display: flex;
-    justify-content: space-evenly;
+    background-color: #333; 
+    color: #fff; 
+    padding: 20px; 
+    text-align: center; /
 
-    a{
-        color: #fff0d5;
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: bold;
-        margin-top: 15%;
+    .footer-content {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
     }
 
-    iframe{
-      margin-top: 2%;
+    .spotify-embed {
+        width: 80%; 
+        height: 85px; 
+        border-radius: 10px; 
+        margin-bottom: 20px; 
     }
 
-`
+    .footer-links {
+        margin: 10px 0; 
+        display: flex; 
+        justify-content: center; 
+        gap: 15px; 
+    }
+
+    .sobre-link,
+    .contato-link,
+    .servicos-link,
+    .faq-link,
+    .social-link {
+        color: white; 
+        text-decoration: none; 
+        transition: color 0.3s; 
+    }
+
+    .sobre-link:hover,
+    .contato-link:hover,
+    .servicos-link:hover,
+    .faq-link:hover,
+    .social-link:hover {
+        color: black; 
+    }
+
+    .footer-info {
+        margin-top: 20px; 
+        font-size: 14px; 
+    }
+
+    .social-icons {
+        display: flex; 
+        justify-content: center; 
+        gap: 15px; 
+        margin-top: 5px; 
+    }
+`;
