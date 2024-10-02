@@ -23,12 +23,13 @@ export const SecLogin = styled.section`
     border-radius: 10px;
     padding: 2rem; 
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    max-width: 700px; 
+    max-width: 00px; 
     width: 100%; 
     text-align: center;
     position: relative; 
     margin: 0 auto; 
-    overflow: hidden; 
+    overflow: hidden;
+    border: 8px solid #8a0015; 
   }
 
   .titulo-login {
@@ -171,7 +172,8 @@ export const SecCad = styled.section`
     max-width: 500px; 
     width: 100%; 
     text-align: center;
-    margin: 0 auto; 
+    margin: 0 auto;
+    border: 8px solid #8a0015;
   }
 
   h1 {
