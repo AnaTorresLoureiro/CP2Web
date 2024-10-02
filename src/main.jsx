@@ -7,8 +7,8 @@ import Home from './routes/Home/index.jsx'
 import Error from './routes/Error/index.jsx'
 import Produto from './routes/Produto/index.jsx'
 import Sobre from './routes/Sobre/index.jsx'
-import Login from './routes/Login/index.jsx'
-import Cadastro from './routes/Cadastro/index.jsx'
+import Login from './routes/Login/Login.jsx'
+import CadUsuarios from './routes/Login/CadastroUsuario.jsx'
 
 // criação de rotas e estilo default
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/cadastro',
-        element:<Cadastro/>,
+        element:<CadUsuarios/>,
       },
     ]
   }
