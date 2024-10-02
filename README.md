@@ -2,13 +2,6 @@
 
 Tokyo Drift é uma loja de carros elétricos que oferece uma experiência única para os amantes de automóveis. Com uma interface moderna e intuitiva, buscamos proporcionar a melhor experiência de compra online.
 
-## Tecnologias Utilizadas
-
-- **React**: Biblioteca para a construção de interfaces de usuário.
-- **Vite**: Ferramenta de construção e bundling para aplicações web.
-- **Styled-components**: Biblioteca para estilização de componentes em React.
-- **React Router**: Para gerenciamento de rotas na aplicação.
-- **React Icons**: Para ícones das redes sociais.
 
 ## Funcionalidades
 
@@ -74,6 +67,12 @@ tokyo-drift/
 <a href="https://www.google.com/search?q=Node.js" target="_blank" style="margin-right:10px"><img src="https://img.shields.io/badge/Node.js-green?style=for-the-badge&logo=node.js&labelColor=black"></a>
 <a href="https://www.google.com/search?q=React" target="_blank" style="margin-right:10px"><img src="https://img.shields.io/badge/React-blue?style=for-the-badge&logo=react&labelColor=black"></a>+
 <a href="https://www.google.com/search?q=Vite" target="_blank" style="margin-right:10px"><img src="https://img.shields.io/badge/Vite-purple?style=for-the-badge&logo=vite&labelColor=black"></a>
+
+- **React**: Biblioteca para a construção de interfaces de usuário.
+- **Vite**: Ferramenta de construção e bundling para aplicações web.
+- **Styled-components**: Biblioteca para estilização de componentes em React.
+- **React Router**: Para gerenciamento de rotas na aplicação.
+- **React Icons**: Para ícones das redes sociais.
 
 
 ## Colaboradores do Projeto
