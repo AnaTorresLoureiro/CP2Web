@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import { useState, useEffect } from "react"
+import { useParams, Link, useNavigate } from "react-router-dom"
+import { ImCancelCircle } from "react-icons/im"
 
-// Estilização do componente Produto
 const MainProduto = styled.main`
     flex-grow: 1;
     padding: 20px;
@@ -64,76 +65,94 @@ const MainProduto = styled.main`
     }
 `;
 
+const CadUsuarios =()=>{
 
-export default function Produto() {
-    const [nome, setNome] = useState('');
-    const [preco, setPreco] = useState('');
-    const [descricao, setDescricao] = useState('');
-    
+    //Hook- useParams- serve para receber da rota ou gerar o codigo
+    let {id} =useParams();
 
-    const handleSubmit = async (e) => {
+    //Hook - useState - Manipula o estado da variavel
+     const [produtos,setProdutos]= useState({
+        id,
+        produto:'',
+        preco:'',
+        descricao:''
+     });
+
+
+    //Hook- useNavigate- Redireciona para outro componente
+    const navigate = useNavigate();
+
+
+    //criando a função handleChange
+     // spred(...) -pega o valor novo e junta com os valores ja cadastrados dentro de um array ou objeto
+     //evento target - captura o que foi digitado em um campo input
+     const handleChange=(e)=>{
+        setProdutos({...produtos,[e.target.name]: e.target.value});
+     }
+
+     //criando a variavel metodo para criar e alterar
+
+     let metodo = "post";
+     if(id){
+        metodo = 'put'
+     }
+
+     //criando a função handleSubmit
+
+     const handleSubmit=(e)=>{
+        //previne que ocorra qualquer modificação no form ex. load
         e.preventDefault();
-        const novoProduto = { nome, preco, descricao };
+        fetch(`http://localhost:5000/produtos/${id ? id :''}`,{
+            method:metodo,
+            headers: {
+                'Content-type':'application/json',
+            },
+            //prepara para receber os dados em json
+            body:JSON.stringify(produtos),
+            //então se estiver tudo certo ele direciona para o componente que deseja
+        })
+     }
 
-        try {
-            const response = await fetch('http://localhost:3001/produtos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(novoProduto),
-            });
 
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Produto cadastrado:', data);
-                // Limpar os campos do formulário após o envio
-                setNome('');
-                setPreco('');
-                setDescricao('');
-            } else {
-                console.error('Erro ao cadastrar produto');
-            }
-        } catch (error) {
-            console.error('Erro:', error);
-        }
-    };
 
     return (
-        <>
-            <h1>Cadastrar Produto</h1>
+        <section className="produtos">
+            <h1>Cadastro de usuários</h1>
+
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="nome">Nome:</label>
-                    <input
-                        type="text"
-                        id="nome"
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="preco">Preço:</label>
-                    <input
-                        type="number"
-                        id="preco"
-                        value={preco}
-                        onChange={(e) => setPreco(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="descricao">Descrição:</label>
-                    <textarea
-                        id="descricao"
-                        value={descricao}
-                        onChange={(e) => setDescricao(e.target.value)}
-                        required
-                    ></textarea>
-                </div>
+                <input
+                    type="text"
+                    name="produto"
+                    value={produtos.produto}
+                    placeholder="Digite o produto"
+                    /* o onChange é utili em situações que é necessários reagir a cada alteração do input */
+                    onChange={handleChange}
+                />
+
+                <input
+                    type="number"
+                    name="preco"
+                    value={produtos.preco}
+                    placeholder="Digite o preço"
+                    /* o onChange é utili em situações que é necessários reagir a cada alteração do input */
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="descricao"
+                    value={produtos.descricao}
+                    placeholder="Digite a descriçao do produto"
+                    /* o onChange é utili em situações que é necessários reagir a cada alteração do input */
+                    onChange={handleChange}
+                />
+
                 <button type="submit">Cadastrar</button>
             </form>
-        </>
-    );
+
+        </section>
+    )
 }
+export default CadUsuarios
+
+
+

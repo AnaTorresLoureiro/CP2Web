@@ -4,16 +4,9 @@
       "id": "141b",
       "usuario": "normaluser",
       "senha": "1234567"
-    },
-    {
-      "id": "6417",
-      "usuario": "mibh",
-      "senha": "sadasdasd"
-    },
-    {
-      "id": "7df5",
-      "usuario": "aaa",
-      "senha": "123"
     }
+  ],
+  "produtos": [
+ 
   ]
 }
