@@ -58,6 +58,8 @@ const MainProduto = styled.main`
         border-radius: 5px;
         cursor: pointer;
         font-size: 18px;
+        margin-top: 5%;
+        margin-right: 15%;
         transition: background-color 0.3s ease;
     }
 

@@ -46,7 +46,12 @@ const router = createBrowserRouter([
         path:'/listarprodutos',
         element:<Listarproduto/>,
       },
+
       {path:'/editarprodutos/:id', element:<Produto/>}
+
+      {path:'/editarprodutos/:id', 
+        element:<Produto/>}
+>>>>>>> 76bce7a7581d52b74afef46a6469a1a0e5a596f4
     ]
   }
 ])

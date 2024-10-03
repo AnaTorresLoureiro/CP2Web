@@ -4,6 +4,11 @@
       "id": "141b",
       "usuario": "normaluser",
       "senha": "1234567"
+    },
+    {
+      "id": "6964",
+      "usuario": "teste",
+      "senha": "12345"
     }
   ],
   "produtos": [
