@@ -7,6 +7,11 @@
     }
   ],
   "produtos": [
- 
+    {
+      "id": "05f8",
+      "produto": "asdas",
+      "preco": "123",
+      "descricao": "xzxsad"
+    }
   ]
 }

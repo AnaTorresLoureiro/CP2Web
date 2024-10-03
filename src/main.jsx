@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Home from './routes/Home/index.jsx'
 import Error from './routes/Error/index.jsx'
 import Produto from './routes/Produto/index.jsx'
+import Listarproduto from './routes/Produto/Listarproduto.jsx'
 import Sobre from './routes/Sobre/index.jsx'
 import Login from './routes/Login/Login.jsx'
 import CadUsuarios from './routes/Login/CadastroUsuario.jsx'
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path:'/cadastro',
         element:<CadUsuarios/>,
+      },
+      {
+        path:'/listarprodutos',
+        element:<Listarproduto/>,
       },
     ]
   }
