@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import styled from "styled-components";
 
 const MainProduto = styled.main`
@@ -86,11 +86,7 @@ const CadUsuarios =()=>{
     function validar() {
         return produtos.produto.trim() !== "" && produtos.preco.trim() !== "" && produtos.descricao.trim() !== "";
       }
-      const produtoExiste = (nomeProduto) => {
-        return produtos.some(
-          (produto) => produto.produto.toLowerCase() === nomeProduto.toLowerCase()
-        );
-      };
+
 
     //criando a função handleChange
      // spred(...) -pega o valor novo e junta com os valores ja cadastrados dentro de um array ou objeto
@@ -109,29 +105,24 @@ const CadUsuarios =()=>{
      //criando a função handleSubmit
 
      const handleSubmit=(e)=>{
-        //previne que ocorra qualquer modificação no form ex. load
-        e.preventDefault();
-
-        if (produtoExiste(produtos.produto)) {
-            alert("Este produto já está cadastrado!");
-            return;
-          } else{        fetch(`http://localhost:5000/produtos/${id ? id :''}`,{
-            method:metodo,
-            headers: {
-                'Content-type':'application/json',
-            },
-            //prepara para receber os dados em json
-            body:JSON.stringify(produtos),
-            //então se estiver tudo certo ele direciona para o componente que deseja
-        })}
-
-     }
+      //previne que ocorra qualquer modificação no form ex. load
+      e.preventDefault();
+      fetch(`http://localhost:5000/produtos/${id ? id :''}`,{
+          method:metodo,
+          headers: {
+              'Content-type':'application/json',
+          },
+          //prepara para receber os dados em json
+          body:JSON.stringify(produtos),
+          //então se estiver tudo certo ele direciona para o componente que deseja
+      })
+   }
 
 
 
     return (
         <MainProduto className="produtos">
-            <h1>Cadastro de usuários</h1>
+            <h1>Cadastro de produtos</h1>
 
             <form onSubmit={handleSubmit}>
                 <input
