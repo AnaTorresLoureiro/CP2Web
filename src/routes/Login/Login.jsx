@@ -37,7 +37,7 @@ const Login =()=>{
                 Math.random().toString(16).substring(2);
             localStorage.setItem("usuario", usuario.current.value);
             localStorage.setItem("senha", token);
-            navigate("/produtos");  // Redireciona para a lista de produtos
+            navigate("/produto");  // Redireciona para a lista de produtos
         } else{
             alert("Usuário/senha inválidos");
         }
