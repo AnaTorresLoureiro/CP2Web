@@ -1,118 +1,53 @@
-import { useState, useEffect } from "react"
-import { useParams, Link, useNavigate } from "react-router-dom"
-import { ImCancelCircle } from "react-icons/im"
-import { SecCad } from "./styleLogon"
-import Background from '../../assets/backgroundLogon.png'
+// Componente para cadastrar novos usuários
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const CadUsuarios =()=>{
+const CadUsuarios = () => {
+  const [usuario, setUsuario] = useState("");
+  const [senha, setSenha] = useState("");
+  const navigate = useNavigate();
 
-    //Hook- useParams- serve para receber da rota ou gerar o codigo
-    let {id} =useParams();
-
-    //Hook - useState - Manipula o estado da variavel
-     const [usuarios,setUsuarios]= useState({
-        id,
-        usuario:'',
-        senha:''
-     });
-
-
-    //Hook- useNavigate- Redireciona para outro componente
-    const navigate = useNavigate();
-
-
-    //criando a função handleChange
-     // spred(...) -pega o valor novo e junta com os valores ja cadastrados dentro de um array ou objeto
-     //evento target - captura o que foi digitado em um campo input
-     const handleChange=(e)=>{
-        setUsuarios({...usuarios,[e.target.name]: e.target.value});
-     }
-
-     //criando a variavel metodo para criar e alterar
-
-     let metodo = "post";
-     if(id){
-        metodo = 'put'
-     }
-
-     function validar() {
-        return usuarios.usuario.trim() !== "" && usuarios.senha.trim() !== "";
-      }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const novoUsuario = { usuario, senha };
     
-         
+    // Envia os dados para a API
+    fetch("http://localhost:5000/usuarios", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(novoUsuario),
+    })
+    .then(() => {
+      alert("Usuário cadastrado com sucesso!");
+      navigate("/login");  // Redireciona para a página de login
+    })
+    .catch((error) => {
+      console.error("Erro ao cadastrar usuário:", error);
+    });
+  };
 
-     //criando a função handleSubmit
+  return (
+    <div>
+      <h2>Cadastrar Usuário</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Usuário"
+          value={usuario}
+          onChange={(e) => setUsuario(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+        />
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  );
+};
 
-     const handleSubmit=(e)=>{
-        //previne que ocorra qualquer modificação no form ex. load
-        e.preventDefault();
-        if(validar()){
-            fetch(`http://localhost:5000/usuarios/${id ? id :''}`,{
-                method:metodo,
-                headers: {
-                    'Content-type':'application/json',
-                },
-                //prepara para receber os dados em json
-                body:JSON.stringify(usuarios),
-                //então se estiver tudo certo ele direciona para o componente que deseja
-            }).then(()=>{
-                navigate("/login")
-            })
-        } else{
-            alert("usuario/senha inválidos")
-        }
-    }
-     //Hook- useEffect - realiza o efeito colateral ele carrega os usuarios cadastrados
-
-     useEffect(()=>{
-        if(id){
-            fetch(`http://localhost:5000/usuarios/${id}`)
-            .then((resp)=>{
-                return resp.json();
-            })
-            .then((data)=>{
-                setUsuarios(data);
-            })
-        }
-        //retorna um array vazio
-     },[])
-
-    return (
-        <SecCad>
-            <div className="banner">
-                    <img src={Background} alt="" /> 
-                </div>
-        
-        <section className="usuario">
-            <h1>SEJA BEM-VINDO</h1>
-
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="usuario"
-                    value={usuarios.usuario}
-                    placeholder="Digite seu Usuário"
-                    /* o onChange é utili em situações que é necessários reagir a cada alteração do input */
-                    onChange={handleChange}
-                />
-
-                <input
-                    type="password"
-                    name="senha"
-                    value={usuarios.senha}
-                    placeholder="Digite sua senha"
-                    /* o onChange é utili em situações que é necessários reagir a cada alteração do input */
-                    onChange={handleChange}
-                />
-
-                <button type="submit">Cadastrar</button>
-                <Link to="/">
-                 <ImCancelCircle />
-                </Link>
-            </form>
-
-        </section>
-        </SecCad>
-    )
-}
-export default CadUsuarios
+export default CadUsuarios;

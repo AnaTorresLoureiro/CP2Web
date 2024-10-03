@@ -29,21 +29,17 @@ const Login =()=>{
     }
     
 
-    //criado a função handleSubmit
-    const handleSubmit=(e)=>{
-        //previne que sua pagina faça qualquer modificação ex. load
+    const handleSubmit = (e) => {
         e.preventDefault();
         if(validar()){
-            //criando a autenticação
-            let token=
-                Math.random().toString(16).substring(2)+
-                Math.random().toString(16).substring(2)
-                localStorage.setItem("usuario",usuario.current.value);
-                localStorage.setItem("senha", token);
-                navigate("/")
-                
+            let token =
+                Math.random().toString(16).substring(2) +
+                Math.random().toString(16).substring(2);
+            localStorage.setItem("usuario", usuario.current.value);
+            localStorage.setItem("senha", token);
+            navigate("/produtos");  // Redireciona para a lista de produtos
         } else{
-            alert("usuario/senha inválidos")
+            alert("Usuário/senha inválidos");
         }
     }
 

@@ -17,20 +17,6 @@ export const SecLogin = styled.section`
     margin-top: 3rem; 
   }
 
-  .container-login { 
-    background-size: cover; 
-    background-position: center; 
-    border-radius: 10px;
-    padding: 2rem; 
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    max-width: 00px; 
-    width: 100%; 
-    text-align: center;
-    position: relative; 
-    margin: 0 auto; 
-    overflow: hidden;
-    border: 8px solid #8a0015; 
-  }
 
   .titulo-login {
     font-size: 3rem; 
@@ -194,7 +180,7 @@ export const SecCad = styled.section`
     color: #fff;
     transition: 0.3s;
     font-size: 1rem;
-    margin-bottom: 15px; /
+    margin-bottom: 15px; 
   }
 
   input::placeholder {
