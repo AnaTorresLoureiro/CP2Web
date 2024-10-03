@@ -14,7 +14,7 @@ const Listarpodutos =()=>{
       method: 'delete',
     })
       .then(() => {
-        window.location = '/listarpodutos';
+        window.location = '/listarprodutos';
       })
       .catch((error) => {
         console.log(error);
