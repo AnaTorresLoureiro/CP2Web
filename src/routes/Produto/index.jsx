@@ -109,7 +109,8 @@ const CadUsuarios =()=>{
      const handleSubmit=(e)=>{
       //previne que ocorra qualquer modificação no form ex. load
       e.preventDefault();
-      fetch(`http://localhost:5000/produtos/${id ? id :''}`,{
+      if(validar()){
+        fetch(`http://localhost:5000/produtos/${id ? id :''}`,{
           method:metodo,
           headers: {
               'Content-type':'application/json',
@@ -118,6 +119,11 @@ const CadUsuarios =()=>{
           body:JSON.stringify(produtos),
           //então se estiver tudo certo ele direciona para o componente que deseja
       })
+      alert("Produto cadastrado com sucesso")
+      }else{
+        alert("Preencha todos os campos")
+      }
+
    }
 
 

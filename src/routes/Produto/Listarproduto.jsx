@@ -78,7 +78,7 @@ const Listarpodutos = () => {
       method: "delete",
     })
       .then(() => {
-        window.location = '/listarpodutos';
+        window.location = '/listarprodutos';
       })
       .catch((error) => {
         console.log(error);
@@ -99,8 +99,8 @@ const Listarpodutos = () => {
   }, []);
 
   return (
-    <section className="listarUsuario">
-        <DivLink><Link to="/cadUsuarios">Inserir novo produto</Link></DivLink>
+    <section className="listarProdutos">
+        <DivLink><Link to="/produto">Inserir novo produto</Link></DivLink>
         <DivLink><Link to="/login">Voltar</Link></DivLink>
 
       <Table>
